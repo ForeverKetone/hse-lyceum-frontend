@@ -36,3 +36,70 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+font-family: 'Futura PT Demi';
+src: url('assets/fonts/FuturaPT-Demi.eot');
+src: url('assets/fonts/FuturaPT-Demi.eot?#iefix') format('embedded-opentype'),
+url('assets/fonts/FuturaPT-Demi.woff') format('woff'),
+url('assets/fonts/FuturaPT-Demi.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+.react-chatbot-kit-chat-header{
+  font: 90%/1.5 "Futura PT Demi", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  background: linear-gradient(to right, #0065B0, #3367bc);
+	color: #fff !important;
+}
+
+
+
+.react-chatbot-kit-chat-bot-avatar-container{
+  background-color: #D3D8E6 !important;
+}
+
+.react-chatbot-kit-user-avatar-container{
+  background-color: #3367bc !important;
+}
+
+.react-chatbot-kit-chat-bot-message-arrow{
+	border-right: 8px solid #ebf2f7 !important;
+}
+
+.react-chatbot-kit-chat-bot-message{
+	background-color: #ebf2f7 !important;
+	color: #383838 !important;
+	font: 80%/1.45 "Helvetica Neue", Arial, sans-serif;
+	font-weight: 500;
+	white-space: pre-line;
+}
+
+.react-chatbot-kit-chat-btn-send{
+	background-color: #0050CF !important;
+}
+
+.app-chatbot-container {
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  z-index: 9999;
+  box-shadow: 5px 5px 13px rgba(91, 81, 81, 0.4);
+  border-radius: 5px;
+}
+
+.app-chatbot-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #D3D8E6;
+  border: none;
+  position: fixed;
+  bottom: 15px;
+  z-index: 9999;
+  right: 40px;
+}

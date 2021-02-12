@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
+import { Chatbot } from 'react-chatbot-kit'
+import { ConditionallyRender } from "react-util-kit";
+
+import { ReactComponent as Chat } from "./assets/icons/bot.svg";
+
+import MessageParser from './MessageParser'
+import ActionProvider from './ActionProvider'
+import config from './config'
+
 import './App.css';
 
 function App() {
+  const [showChatbot, toggleChatbot] = useState(true);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="app-chatbot-container">
+        <ConditionallyRender
+            ifTrue={showChatbot}
+            show={
+              <Chatbot
+                config={config}
+                messageParser={MessageParser}
+                actionProvider={ActionProvider}
+              />
+            }
+        />
+      </div>
+
+      <button
+        className="app-chatbot-button"
+        onClick={() => toggleChatbot((prev) => !prev)}
+      >
+        <Chat className="app-chatbot-button-icon" />
+      </button>
     </div>
   );
 }
