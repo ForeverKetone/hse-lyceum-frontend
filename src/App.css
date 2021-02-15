@@ -48,7 +48,7 @@ font-style: normal;
 }
 
 .react-chatbot-kit-chat-header{
-  font: 90%/1.5 "Futura PT Demi", "Helvetica Neue", Arial, sans-serif;
+  font: 90%/1.5 "Futura PT Demi", "Helvetica Neue", Arial, sans-serif !important;
   font-weight: 400;
   background: linear-gradient(to right, #0065B0, #3367bc);
 	color: #fff !important;

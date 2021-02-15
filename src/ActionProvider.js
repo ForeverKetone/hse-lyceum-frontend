@@ -7,35 +7,48 @@ class ActionProvider {
 
   helloWorldHandler = () => {
     const message = this.createChatBotMessage("Здравствуйте!\nВы задать мне любой вопрос о поступлении в Лицей")
-    this.setChatbotMessage(message)
+    this.addMessageToBotState(message)
   }
 
   timeHandler = () => {
     const message = this.createChatBotMessage("Текущее время в Москве:",{
       widget: "time"
     });
-    this.setChatbotMessage(message);
+    this.addMessageToBotState(message)
   }
 
   thanksHandler = () => {
     const message = this.createChatBotMessage("Рад помочь!");
-    this.setChatbotMessage(message);
+    this.addMessageToBotState(message)
   }
 
   otherHandler = (word) => {
-    const encodedValue = encodeURIComponent(word);
     fetch(`https://hse-lyc.herokuapp.com/api/query?`+ new URLSearchParams({
         question: word
       })
     )
       .then(response => response.json())
-        .then(json => this.createChatBotMessage(json.time))
-          .then(message => this.setChatbotMessage(message));
+        .then(json => this.createChatBotMessage(json.bot_message))
+          .then(message => {this.addMessageToBotState(message);});
+
   }
 
-  setChatbotMessage = (message) => {
-    this.setState(state => ({...state, messages: [...state.messages, message]}))
-  }
+  addMessageToBotState = (message) => {
+   if (Array.isArray(message)) {
+     this.setState((state) => ({
+       ...state,
+       messages: [...state.messages, ...message],
+     }));
+   } else {
+     this.setState((state) => ({
+       ...state,
+       messages: [...state.messages, message],
+     }));
+   }
+   var messages = JSON.parse(localStorage.getItem("chat_messages"))
+   messages.push(message)
+   localStorage.setItem("chat_messages", JSON.stringify(messages));
+ };
 }
 
 export default ActionProvider;
