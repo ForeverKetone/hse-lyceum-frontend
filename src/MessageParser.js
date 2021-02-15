@@ -14,22 +14,10 @@ class MessageParser {
 
     const lowercase = message.toLowerCase()
 
-    if (lowercase.includes("прив")
-        | lowercase.includes("здравств")
-        | lowercase.includes("добрый")
-        | lowercase.includes("hello")) {
-      this.actionProvider.helloWorldHandler()
-    } else {
-      if (lowercase.includes("пасиб")) {
-        this.actionProvider.thanksHandler()
-      } else{
-      if (lowercase.includes("врем")) {
+    if (lowercase.includes("врем")) {
         this.actionProvider.timeHandler()
-      }
-         else{
-          this.actionProvider.otherHandler(lowercase)
-        }
-      }
+    } else {
+          this.actionProvider.apiHandler(lowercase)
     }
 
     }

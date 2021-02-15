@@ -5,11 +5,6 @@ class ActionProvider {
     this.createClientMessage = createClientMessage;
   }
 
-  helloWorldHandler = () => {
-    const message = this.createChatBotMessage("Здравствуйте!\nВы задать мне любой вопрос о поступлении в Лицей")
-    this.addMessageToBotState(message)
-  }
-
   timeHandler = () => {
     const message = this.createChatBotMessage("Текущее время в Москве:",{
       widget: "time"
@@ -17,12 +12,7 @@ class ActionProvider {
     this.addMessageToBotState(message)
   }
 
-  thanksHandler = () => {
-    const message = this.createChatBotMessage("Рад помочь!");
-    this.addMessageToBotState(message)
-  }
-
-  otherHandler = (word) => {
+  apiHandler = (word) => {
     fetch(`https://hse-lyc.herokuapp.com/api/query?`+ new URLSearchParams({
         question: word
       })
