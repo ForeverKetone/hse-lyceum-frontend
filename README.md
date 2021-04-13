@@ -1,1 +1,0 @@
-# hse-lyceum-frontend
